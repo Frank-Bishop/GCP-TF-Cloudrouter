@@ -1,11 +1,13 @@
 variable "name" {
-  type        = "string"
-#  description = "Test GCP network"
+  type = "string"
+
+  #  description = "Test GCP network"
 }
 
 variable "project-id" {
-  type        = "string"
-#  description = "Project Id"
+  type = "string"
+
+  #  description = "Project Id"
 }
 
 variable "auto_create_subnetworks" {
@@ -13,5 +15,6 @@ variable "auto_create_subnetworks" {
   default     = "false"
   description = "Auto-creation of the associated subnet"
 }
-variable "vpc_desc" { }
-variable "routing_mode" { }
+
+variable "vpc_desc" {}
+variable "routing_mode" {}

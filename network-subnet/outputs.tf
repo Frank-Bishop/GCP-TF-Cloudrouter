@@ -7,6 +7,6 @@
 #  description = "The URL of the created resource"
 #}
 output "subnet_id_${count.index}" {
-#  value = "${google_compute_subnetwork.bar.*.id}"
-    value = ["${google_compute_subnetwork.subnetwork.*.id}"]
+  #  value = "${google_compute_subnetwork.bar.*.id}"
+  value = ["${google_compute_subnetwork.subnetwork.*.id}"]
 }

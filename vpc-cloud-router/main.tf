@@ -1,18 +1,14 @@
 resource "google_compute_router" "cloud_router" {
-  name    = "${var.cloud_router_name}"
+  name    = "${var.vpc_router_name}"
   network = "${var.vpc}"
-#  description "testrouter"
+  description = "${var.vpc_router_desc}"
   bgp {
-    asn               = 64514
+    asn               = "${var.vpc_router_bgp_asn}"
     advertise_mode    = "CUSTOM"
     advertised_groups = ["ALL_SUBNETS"]
 
     advertised_ip_ranges {
-      range = "1.2.3.4"
-    }
-
-    advertised_ip_ranges {
-      range = "6.7.0.0/16"
+      range = "${var.vpc_router_advertised_ip_range}"
     }
   }
 }

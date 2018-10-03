@@ -1,6 +1,6 @@
 #variable "vpc_name" { default = "test-vpc" } # this will be generated via create.sh
 variable "subnet_name" {
-  default = "test-vpc-subnet"
+  default = "project-vpc-subnet"
 }
 
 variable "ip_cidr_range" {
@@ -45,9 +45,19 @@ variable "vpc_flow_logs" {
 }
 
 #Cloud router related variables
-variable "cloud_router_name" {
+variable "vpc_router_name" {
   default = "test-gcp-router"
 }
+variable "vpc_router_desc" {
+  default = "test-description_NEW"
+}
+variable "vpc_router_bgp_asn" {
+  default = "65515"
+}
+locals {
+  vpc_router_advertised_ip_range = "${var.ip_cidr_range}"
+}
+
 
 variable "IDs" {
   description = "Map All the related IDs together"

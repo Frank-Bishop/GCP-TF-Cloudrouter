@@ -21,5 +21,10 @@ module "subnet-personal-vpc" {
 module "vpc-cloud-router" {
   source            = "vpc-cloud-router"
   vpc               = "${module.personal-vpc.self_link}"
-  cloud_router_name = "${var.cloud_router_name}"
+  vpc_router_name = "${var.vpc_router_name}"
+    vpc_router_desc = "${var.vpc_router_desc}"
+    vpc_router_bgp_asn = "${var.vpc_router_bgp_asn}"
+    vpc_router_advertised_ip_range = "${local.vpc_router_advertised_ip_range}"
+
+
 }

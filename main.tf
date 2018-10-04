@@ -10,7 +10,7 @@ module "subnet-personal-vpc" {
   source            = "network-subnet"
   name              = "${var.subnet_name}"
   vpc               = "${module.personal-vpc.self_link}"
-  subnetwork-region = "${var.subnetwork_region}"
+  region = "${var.subnetwork_region1}"
   ip_cidr_range     = "${var.ip_cidr_range}"
   subnet_count      = "${var.subnet_count}"
   subnet_newbit     = "${var.subnet_newbit}"
@@ -26,5 +26,8 @@ module "vpc-cloud-router" {
     vpc_router_bgp_asn = "${var.vpc_router_bgp_asn}"
     vpc_router_advertised_ip_range = "${local.vpc_router_advertised_ip_range}"
 
-
+    vpc_router_peer1_name = "${var.vpc_router_peer1_name}"
+    vpc_router_peer1_ip_address = "${var.vpc_router_peer1_ip_address}"
+    vpc_router_peer1_asn = "${var.vpc_router_peer1_asn}"
+    vpc_router_peer1_advertised_route_priority = "${var.vpc_router_peer1_advertised_route_priority}"
 }

@@ -1,6 +1,6 @@
 variable "name" {}
 variable "vpc" {}
-variable "subnetwork-region" {}
+variable "region" {}
 variable "subnet_desc" {}
 variable "ip_cidr_range" {}
 variable "subnet_newbit" {}

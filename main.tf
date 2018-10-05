@@ -22,6 +22,7 @@ module "vpc-cloud-router" {
   source            = "vpc-cloud-router"
   vpc               = "${module.personal-vpc.self_link}"
   vpc_router_name = "${var.vpc_router_name}"
+    vpc_router_count = "${var.vpc_router_count}"
     vpc_router_desc = "${var.vpc_router_desc}"
     vpc_router_bgp_asn = "${var.vpc_router_bgp_asn}"
     vpc_router_advertised_ip_range = "${local.vpc_router_advertised_ip_range}"

@@ -10,9 +10,7 @@ type    = "list"
 default = [ "europe-west2", "europe-west3" ]
 }
 
-#router regions
-variable "vpc_router_region1" { default = "europe-west1" }
-variable "vpc_router_region2" { default = "europe-west2" }
+#labels = { environment = "dev" } # Only works for Instances
 
 variable "region1" { default = "europe-west1" }
 variable "project-name" { default = "809904749726" }
@@ -28,7 +26,13 @@ variable "vpc_flow_logs" { default = "true" }
 
 #Cloud router related variables
 
-variable "vpc_router_name" { default = "test-gcp-router"}
+#router regions
+variable "vpc_router_region1" { default = "europe-west1" }
+variable "vpc_router_region2" { default = "europe-west2" }
+
+#number of CLoud routers per region
+variable "vpc_router_count" { default = "2" }
+variable "vpc_router_name" { default = "test-gcp-router" }
 variable "vpc_router_desc" { default = "test-description_NEW" }
 variable "vpc_router_bgp_asn" { default = "65410" }
 locals { vpc_router_advertised_ip_range = "${var.ip_cidr_range}" }

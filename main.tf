@@ -25,6 +25,8 @@ module "vpc-cloud-router" {
     vpc_router_desc = "${var.vpc_router_desc}"
     vpc_router_bgp_asn = "${var.vpc_router_bgp_asn}"
     vpc_router_advertised_ip_range = "${local.vpc_router_advertised_ip_range}"
+    vpc_router_region1 = "${var.vpc_router_region1}"
+    vpc_router_region2 = "${var.vpc_router_region2}"
 
     vpc_router_peer1_name = "${var.vpc_router_peer1_name}"
     vpc_router_peer1_ip_address = "${var.vpc_router_peer1_ip_address}"

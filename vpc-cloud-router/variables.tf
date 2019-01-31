@@ -12,7 +12,15 @@ variable "vpc_router_region2" { }
 
 #Peer related variables
 
+
 variable "vpc_router_peer1_name" { }
 variable "vpc_router_peer1_ip_address" { }
 variable "vpc_router_peer1_asn" { }
 variable "vpc_router_peer1_advertised_route_priority" { }
+
+
+variable "vpc_router_peer2_name" { }
+variable "vpc_router_peer2_ip_address" { }
+variable "vpc_router_peer2_asn" { }
+variable "vpc_router_peer2_advertised_route_priority" { }
+

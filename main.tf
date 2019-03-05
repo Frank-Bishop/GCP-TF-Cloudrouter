@@ -63,6 +63,7 @@ resource "google_compute_firewall" "ssh" {
 
   target_tags   = ["${var.vpc_name}-firewall-ssh"]
   source_ranges = ["0.0.0.0/0"]
+
 }
 
 
@@ -77,7 +78,7 @@ module "vpn-module-dynamic" {
   gateway_name             = "vpn-gw-us-we1-dynamic"
   tunnel_name_prefix       = "vpn-tn-us-we1-dynamic"  
   shared_secret            = "secrets"
-  tunnel_count             = 2
+  tunnel_count             = 1
   peer_ips                 = ["195.228.45.144","84.2.3.210"]
 
   cr_name                  = "${var.vpc_router_name}-region1-0"
@@ -96,7 +97,7 @@ module "vpn-module-dynamic-2" {
   gateway_name             = "vpn-gw-us-we2-dynamic"
   tunnel_name_prefix       = "vpn-tn-us-we2-dynamic"  
   shared_secret            = "secrets"
-  tunnel_count             = 2
+  tunnel_count             = 1
   peer_ips                 = ["195.228.45.144","84.2.3.210"]
 
   cr_name                  = "${var.vpc_router_name}-region2-0"

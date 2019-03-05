@@ -1,7 +1,7 @@
 #Network related variables
 
 variable "subnet_name" { default = "project-vpc-subnet" }
-variable "ip_cidr_range" { default = "192.168.0.0/23" }
+variable "ip_cidr_range" { default = "192.168.10.0/22" }
 variable "subnet_newbit" { default = "5" }
 variable "subnetwork_region1" { default = "europe-west2" }
 

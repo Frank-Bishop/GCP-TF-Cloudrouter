@@ -1,7 +1,7 @@
 #Network related variables
 
 variable "subnet_name" { default = "project-vpc-subnet" }
-variable "ip_cidr_range" { default = "192.168.0.0/23" }
+variable "ip_cidr_range" { default = "192.168.0.0/22" }
 variable "subnet_newbit" { default = "5" }
 variable "subnetwork_region1" { default = "europe-west2" }
 
@@ -78,5 +78,5 @@ variable "IDs" {
 #Script generetaed values coming from here - comment out whan using in production
 #variable "vpc_name" { default = "terraform-demo-new" }
 #variable "subnet_count" { default = "2" }
-variable "vpc_name" { default = "techsess2" }
-variable "subnet_count" { default = "2" }
+variable "vpc_name" { default = "techsess-2" }
+variable "subnet_count" { default = "3" }

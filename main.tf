@@ -1,6 +1,6 @@
 module "personal-vpc" {
   source       = "network"
-  name         = "${var.vpc_name}"
+  name         = "${local.vpc_name}"
   project-id   = "${var.project-id}"
   routing_mode = "${var.routing_mode}"
   vpc_desc     = "${var.vpc_desc}"
@@ -12,10 +12,15 @@ module "subnet-personal-vpc" {
   vpc               = "${module.personal-vpc.self_link}"
   region = "${var.subnetwork_region1}"
   ip_cidr_range     = "${var.ip_cidr_range}"
-  subnet_count      = "${var.subnet_count}"
+  small_subnet_count      = "${var.small_subnet_count}"
+  big_subnet_count      = "${var.big_subnet_count}"
   subnet_newbit     = "${var.subnet_newbit}"
   vpc_flow_logs     = "${var.vpc_flow_logs}"
   subnet_desc       = "${local.vpc_desc}"
+    subnet_allocation_map = "${var.subnet_allocation_map}"
+    newbit_size =	"${var.newbit_size}"
+    subnets =	"${var.subnets}"
+
 }
 
 module "vpc-cloud-router" {
@@ -42,29 +47,29 @@ module "vpc-cloud-router" {
 }
 
 
-resource "google_compute_firewall" "ssh" {
-  name    = "${var.vpc_name}-firewall"
-  network = "${var.vpc_name}"
-
-  allow {
-    protocol = "tcp"
-    ports    = ["22"]
-  }
+#resource "google_compute_firewall" "ssh" {
+#  name    = "${var.vpc_name}-firewall"
+#  network = "${var.vpc_name}"
+#
+#  allow {
+#    protocol = "tcp"
+#    ports    = ["22"]
+#  }
 
 #  allow {
 #    protocol = "tcp"
 #    ports    = ["80"]
 #  }
 #
-  allow {
-    protocol = "tcp"
-    ports    = ["443"]
-  }
-
-  target_tags   = ["${var.vpc_name}-firewall-ssh"]
-  source_ranges = ["0.0.0.0/0"]
-
-}
+#  allow {
+#    protocol = "tcp"
+#    ports    = ["443"]
+#  }
+#
+#  target_tags   = ["${var.vpc_name}-firewall-ssh"]
+#  source_ranges = ["0.0.0.0/0"]
+#
+#}
 
 
 

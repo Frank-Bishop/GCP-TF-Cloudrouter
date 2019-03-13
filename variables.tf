@@ -23,6 +23,10 @@ locals {
   vpc_desc = "AppID: ${var.IDs["AppID"]} | BillingID: ${var.IDs["BillingID"]} | AppName: ${var.IDs["AppName"]} | Environment: ${var.IDs["Environment"]}  | CSIAppID: ${var.IDs["CSIAppID"]}"
 }
 
+locals {
+  vpc_name = "${var.IDs["AppID"]}-${var.IDs["BillingID"]}-${var.IDs["AppName"]}-${var.IDs["Environment"]}-${var.IDs["CSIAppID"]}"
+}
+
 variable "routing_mode" { default = "GLOBAL" }
 variable "vpc_flow_logs" { default = "true" }
 
@@ -62,11 +66,11 @@ variable "IDs" {
   type        = "map"
 
   default = {
-    AppID      = "1"
-    BillingID  = "2"
-    AppName  = "3"
-    Environment  = "4"
-    CSIAppID  = "5"
+    AppID      = "appid1"
+    BillingID  = "billingid1"
+    AppName  = "testname1"
+    Environment  = "dev"
+    CSIAppID  = "csiappid1"
     CTIResourceAudit  = "6"
     StartDate  = "7"
     PublicRouted  = "NO"
@@ -75,8 +79,34 @@ variable "IDs" {
   }
 }
 
+variable subnet_allocation_map {
+  description = "Map of CIDR blocks to carve into subnets based on size"
+#  type = map
+  default = {
+    xsmall = "10.1.0.0/24"
+    small  = "10.1.2.0/24"
+    medium = "10.1.3.0/24"
+    large  = "10.1.4.0/24"
+   }
+}
+
+variable "newbit_size" {
+  description = "Map the friendly name to our subnet bit mask"
+  type        = "map"
+  default = {
+    xsmall = "6"
+    small  = "5"
+    medium = "4"
+    large  = "3"
+  }
+}
+
+variable "subnets" { default =  [ "10.1.0.0/24", "10.1.2.0/24", "10.1.3.0/24" ,"10.1.4.0/28", "10.1.4.16/28" ] }
+
 #Script generetaed values coming from here - comment out whan using in production
 #variable "vpc_name" { default = "terraform-demo-new" }
 #variable "subnet_count" { default = "2" }
+
 variable "vpc_name" { default = "techsess-2" }
-variable "subnet_count" { default = "3" }
+variable "small_subnet_count" { default = "4" }
+variable "big_subnet_count" { default = "0" }
